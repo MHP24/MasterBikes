@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/admin-requests.css">
+    <link rel="stylesheet" href="/css/admin-delivery.css">
+    <link rel="stylesheet" href="/css/admin-users.css">
+    <title>Usuarios</title>
+</head>
+<body>
+
+    <%- include("templates/admin-navbar.ejs", {user: userData})%>
+
+    <main class="main">
+        <section class="head">
+            <h1 class="head__title">Usuarios</h1>
+            <a href="/" class="logo">MasterBikes</a>
+            <p class="head__date"><%=data[0].today%></p>
+        </section>
+        <%if(data.length <= 0) {%>
+            <h2 class="no-results">Sin Usuarios :(</h2>
+        <%}else {%>
+            <div class="request request-t req-users">
+                <p class="request__name rqn-title">Rut</p>
+                
+                <p class="request__name rqn-title">Im&aacute;gen</p>
+                <div class="request__service">
+                    <p class="request__name rqn-title">Usuario</p>
+                </div>
+                <p class="request__name rqn-title">Mail</p>
+                <p class="request__name rqn-title">Ocupaci&oacute;n</p>
+            </div>
+            
+            <section class="requests">
+                <%data.forEach( ( {id,  rut, user_picture, username, email, ocupation} ) => {%>
+                    <div class="request__container">
+                        <div class="request req-users">
+                            <p class="request__name"><%=rut%></p>
+                            
+                            <img src="<%=user_picture%>" alt="MB" class="client__img">
+                            <div class="request__service">
+                                <p class="request__name"><%=username%></p>
+                            </div>
+                            <p class="request__name"><%=email%></p>
+                            <p class="request__name"><%=ocupation%></p>
+                        </div>
+                    </div>
+                <%});%>
+            </section>
+        <%}%>
+    </main>
+    <script src="/js/admin-navigation.js"></script>
+</body>
+</html>

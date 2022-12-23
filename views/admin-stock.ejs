@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/admin-requests.css">
+    <link rel="stylesheet" href="/css/admin-stock.css">
+    <title>Stock</title>
+</head>
+<body>
+    <%- include("templates/admin-navbar.ejs", {user: userData})%>
+    <main class="main">
+        <section class="head">
+            <h1 class="head__title">Stock</h1>
+        </section>
+            <section class="requests">
+                <%data.forEach( ({ product_id, product_sku, product_img, product_name, product_category, quantity }) => {%>
+                    <div class="request__container">
+                        <form class="request" action="/admin/update-stock/<%=product_id%>" method="post">
+                            <p class="request__id">#<%=product_sku%></p>
+                            <div class="request__client">
+                                <img src="<%=product_img%>" alt="<%=product_name%>" class="client__img">
+                                <p class="client__name"><%=product_name%></p>
+                            </div>
+                            <div class="request__service">
+                                <p class="request__name"><%=product_category%></p>
+                            </div>
+                            <input type="text" value="<%=quantity%>" name="stock" id="stock" class="field__input">
+                            <div class="request__actions">
+                                <button  type="submit" class="g--btns stock__btn" href="/admin/stock/<%=product_id%>">
+                                    Guardar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                <%});%>
+            </section>
+    </main>
+    <script src="/js/admin-navigation.js"></script>
+</body>
+</html>

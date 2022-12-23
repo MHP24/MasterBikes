@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/admin-requests.css">
+    <title>Reparaci&oacute;n #<%=data.repair_id%></title>
+</head>
+<body>
+    <%- include("templates/admin-navbar.ejs", {user: userData})%>
+    <main class="main">
+        <section class="head">
+            <h1 class="head__title">Reparaci&oacute;n #<%=data.repair_id%> - <%=data.status%></h1>
+            <p class="head__date"><%=data.req_date%></p>
+        </section>
+        
+        <div class="form-container">
+            <form action="/admin/update-repair/<%=data.repair_id%>" class="form__repair" method="post">
+                <div class="form__field">
+                    <label for="requeriment" class="field__label">Requerimiento</label>
+                    <textarea name="requeriment" id="requeriment" class="field__area" disabled placeholder="Requerimiento"><%=data.repair_descr%></textarea>
+                </div>
+
+                <hr style="width: 95%;">
+
+                <div class="form__field">
+                    <label for="status" class="field__label">Seleccionar Estado</label>
+                    <select name="field__status" id="field__status" class="field__options">
+                        <option value="Solicitado" class="option">Solicitado (Cliente requiere de observaci&oacute;n)</option>
+                        <option value="En proceso" class="option">En proceso (Inicia la reparaci&oacute;n)</option>
+                        <option value="Listo" class="option">Listo (Listo para retiro o entrega)</option>
+                        <option value="Finalizado" class="option">Finalizado (Reparaci&oacute;n &eacute;xitosa o no disponible)</option>
+                    </select>
+                </div>
+
+                <div class="form__field">
+                    <label for="summary" class="field__label">Observaciones</label>
+                    <textarea name="summary" id="summary" class="field__area" placeholder="Indique el estado actual de la reparación"><%=data.feedback%></textarea>
+                </div>
+
+                <button class="g--btns repair-btn" type="submit">Agregar Seguimiento</button>
+            </form>
+        </div>
+    </main>
+    <script src="/js/admin-navigation.js"></script>
+</body>
+</html>

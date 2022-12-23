@@ -1,0 +1,223 @@
+:root {
+    --color-c1: #171717;
+    --color-c2: #272727;
+    --color-c3: #EDEDED;
+    --color-c3--hover: #c9c9c9;
+    --color-c4: #AF012D;
+    --color-c5: #413F3F;
+    --color-c6: #111111;
+    --font-type: 'Open Sans', sans-serif;
+    --font-type-titles: 'Lato', sans-serif;
+    --font-color: #FFFFFF;
+    --font-size-title: 2rem;
+    --font-size-text: 1.2rem;
+}
+
+body {
+    background-color: var(--color-c1);
+    font-family: var(--font-type);
+}
+
+.main {
+    width: 100%;
+    margin-top: 6rem;
+}
+
+.profile {
+    width: 95%;
+    margin: 5rem auto;
+}
+
+.profile__title {
+    color: var(--font-color);
+    font-weight: 800;
+    text-transform: capitalize;
+    font-family: var(--font-size-title);
+    font-size: var(--font-size-title);
+}
+
+.profile__img {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2em;
+    border-bottom: 4px var(--color-c4) solid;
+}
+
+.profile__img__src {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 4px var(--color-c4) solid;
+}
+
+.info__title {
+    border-bottom: 4px var(--color-c4) solid;
+    width: fit-content;
+    color: var(--font-color);
+    text-transform: uppercase;
+    font-weight: 800;
+    text-align: center;
+}
+
+.profile__container {
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2em;
+    padding-bottom: 2em;
+    border-bottom: 4px var(--color-c4) solid;
+}
+
+.profile__info{
+    border: 2px rgba(128, 128, 128, 0.286) solid;
+    background-color: var(--color-c2);
+    padding: 0 2em;
+}
+
+.info__data__container, .profile__bills {
+    background-color: var(--color-c1);
+}
+.data__item {
+    margin: auto;
+    width: 95%;
+    padding: .6em 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.data__paragraph,
+.data__title {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: var(--font-size-text);
+}
+
+.data__title {
+    color: var(--color-c4);
+}
+
+.data__paragraph {
+    color: var(--font-color);
+}
+
+.bills {
+    border: 2px rgba(128, 128, 128, 0.286) solid;
+    background-color: var(--color-c2);
+    padding: 0 2em 2em 2em;
+}
+
+.bills__container {
+    background-color: var(--color-c1);
+    height: 450px;
+    overflow-y: auto;
+}
+
+.bill {
+    text-decoration: none;
+    display: flex;    
+    justify-content: space-around;
+    padding: .2em;
+    margin: 1em 0;
+    align-items: center;
+    border-bottom: 2px rgba(128, 128, 128, 0.286) solid;
+    transition: .3s;
+    /* border: 2px red solid; */
+}
+
+.bill:hover {
+    opacity: .75;
+    transition: .3s;
+}
+
+.bill__price,
+.bill__id {
+    font-weight: 800;
+    font-family: var(--font-type);
+    font-size: var(--font-size-text);
+}
+
+.bill__id {
+    color: var(--color-c4);
+}
+
+.bill__date {
+    color: var(--color-c3--hover);
+    text-transform: capitalize;
+    font-style: italic;
+    font-size: var(--font-size-text);
+}
+
+.bill__price {
+    color: var(--font-color);
+}
+
+.bill__status {
+    color: var(--color-c4);
+    font-size: var(--font-size-text);
+    font-weight: 800;
+    font-family: var(--font-type-titles);
+    font-style: italic;
+}
+
+.info__no-data {
+    color: var(--font-color);
+    text-align: center;
+    font-weight: 800;
+    font-family: var(--font-type);
+    font-style: italic;
+}
+
+@media (max-width: 1040px) {
+    .profile__container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.repair {
+    padding: 0 .7em;
+}
+
+.repair__data,
+.repair__msc {
+    padding: .2em;
+    width: 50%;
+}
+
+.rent__data,
+.rent__msc {
+    text-align: justify;
+    padding: .4em;
+}
+
+.rent__data {
+    width: 70%;
+}
+
+.rent__msc {
+    width: 40%;
+}
+
+.bill__area {
+    overflow-x: auto;
+}
+
+.profile__btns {
+    margin-top: 1em;
+}
+
+
+.profile-btn {
+    color: var(--font-color);
+    background-color: var(--color-c4);
+    transition: .3s;
+}
+
+.profile-btn:hover {
+    background-color: var(--color-c4);
+    opacity: .8;
+    transition: .3s;
+}

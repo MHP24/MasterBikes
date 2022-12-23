@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/shopping-cart.css">
+    <title>Carro de compras</title>
+</head>
+<body>
+    <%- include("templates/navbar.ejs")%>
+    <main class="main">
+        <section class="shopping-cart">
+            <h2 class="shopping-cart__title">Carro de compras</h2>
+            <%if(productsCount > 0){%>
+                <div class="shopping-cart__container">
+                    <div class="shopping-cart__products">
+                        <%products.forEach( ({id, product_sku, product_name, product_price, product_img}) => {%>
+                            <div class="shopping-cart__product">
+                                <img src="<%=product_img%>" alt="" class="shopping-cart__product__img">
+                                <div class="shopping-cat__product__info">
+                                    <p class="info__name"><%=product_name%></p>
+                                    <p class="info__sku">SKU <%=product_sku%></p>
+                                    <p class="info__price">$<%=product_price%></p>
+                                </div>
+                                <a href="/remove/<%=id%>" class="product__remove"><img src="/img/icons/delete.svg" alt="delete"></a>
+                            </div>
+                        <%});%>
+                    </div>
+                    <div class="shopping-cart__summary">
+                        <div class="summary__container">
+                            <div class="summary__price">
+                                <h2 class="summary__title">Total</h2>
+                                <div class="summary__content">
+                                    <p class="summary__wh">Producto(s)</p>
+                                    <p class="summary__rd"><%=productsCount%></p>
+                                </div>
+                                <div class="summary__content">
+                                    <p class="summary__wh">Subtotal</p>
+                                    <p class="summary__rd">$<%=value%></p>
+                                </div>
+                            </div>
+        
+                            <div class="summary__action">
+                                <div class="summary__content">
+                                    <p class="summary__rd">Total</p>
+                                    <p class="summary__rd">$<%=value%></p>
+                                </div>
+                                <a href="/payment" class="g--btns summary__btn">Ir a pagar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <%}else {%>
+                <p style="height: 50vh;" class="products--no">¡No hay productos a&uacute;n!</p>
+            <%}%>
+        </section>
+    </main>
+
+
+   <%- include("templates/footer.ejs") %>
+   <script src="/js/navigation.js"></script>
+</body>
+</html>

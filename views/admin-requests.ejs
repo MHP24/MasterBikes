@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/admin-requests.css">
+    <link rel="stylesheet" href="/css/admin-requests-layout.css">
+    <title>Solicitudes</title>
+</head>
+<body>
+    <%- include("templates/admin-navbar.ejs", {user: userData})%>
+    <main class="main">
+        <section class="head">
+            <h1 class="head__title">Solicitudes</h1>
+            <div class="head__group">
+                <a href="/admin/horarios" class="g--btns gest__btn">Gestionar Horarios</a>
+                <p class="head__date"><%=day.today%></p>
+            </div>
+        </section>
+        <%if(repairs.length <= 0 && rents.length <= 0) {%>
+            <h2 class="no-results">Sin solicitudes :(</h2>
+        <%}else {%>
+            <section class="requests">
+                <div class="request request-t">
+                    <p class="request__id rqn-title">N Servicio</p>
+                    
+                    <div class="request__client">
+                        <p class="request__id rqn-title">Cliente</p>
+                    </div>
+                    <div class="request__service">
+                        <p class="request__id rqn-title">Servicio</p>
+                    </div>
+                    <p class="request__id rqn-title">Fecha</p>
+                    <p class="request__id rqn-title">Estado</p>
+                    <div class="request__actions">
+                        <p class="request__id rqn-title">Acciones</p>
+                    </div>
+                </div>
+                <%repairs.forEach( ( { repair_id, username, req_date, status, type, user_picture } ) => {%>
+                    <div class="request__container">
+                        <div class="request">
+                            <%if(type === 'reparaciones'){%>
+                                <p class="request__id">#Rep<%=repair_id%></p>
+                            <%}else if(type === 'mantenciones'){%>
+                                <p class="request__id">#Man<%=repair_id%></p>
+                            <%}%>
+                            
+                            <div class="request__client">
+                                <img src="<%=user_picture%>" alt="asd" class="client__img">
+                                <p class="client__name"><%=username%></p>
+                            </div>
+                            <div class="request__service">
+                                <%if(type === 'reparaciones'){%>
+                                    <img src="/img/icons/repair.svg" alt="rent" class="service__img">
+                                    <p class="request__name">Reparaci&oacute;n</p>
+                                <%}else if(type === 'mantenciones'){%>
+                                    <img src="/img/icons/upgrade.svg" alt="rent" class="service__img">
+                                    <p class="request__name">Mantenci&oacute;n</p>
+                                <%}%>
+                            </div>
+                            <p class="request__date"><%=req_date%></p>
+                            <%if(status === 'Solicitado'){%>
+                                <p class="request__status request__status--do"><%=status%></p>
+                            <%}else if(status === 'En proceso'){%>
+                                <p class="request__status request__status--do"><%=status%></p>
+                            <%}else if(status === 'Listo'){%>
+                                <p class="request__status request__status--do"><%=status%></p>
+                            <%}else if(status === 'Finalizado'){%>
+                                <p class="request__status request__status--rdy"><%=status%></p>
+                            <%}%>
+        
+                            <div class="request__actions">
+                                <%if(type === 'reparaciones'){%>
+                                    <a class="request__action" href="/admin/reparaciones/<%=repair_id%>"><img src="/img/icons/edit.svg" alt="edit" class="request__action--img"></a>
+                                    <a class="request__action" href="/admin/reparaciones/delete/<%=repair_id%>"><img src="/img/icons/delete.svg" alt="delete" class="request__action--img"></a>
+                                <%}else if(type === 'mantenciones'){%>
+                                    <a class="request__action" href="/admin/mantenciones/<%=repair_id%>"><img src="/img/icons/edit.svg" alt="edit" class="request__action--img"></a>
+                                    <a class="request__action" href="/admin/mantenciones/delete/<%=repair_id%>"><img src="/img/icons/delete.svg" alt="delete" class="request__action--img"></a>
+                                <%}%>
+                            </div>
+                        </div>
+                    </div>
+                <%});%>
+                <%rents.forEach(({ id:rent_id, username, rent_date, rent_status, user_picture }) => {%>
+                    <div class="request__container">
+                        <div class="request">
+                            <p class="request__id">#Arr<%=rent_id%></p>
+                            <div class="request__client">
+                                <img src="<%=user_picture%>" alt="" class="client__img">
+                                <p class="client__name"><%=username%></p>
+                            </div>
+                            <div class="request__service">
+                                <img src="/img/icons/rent.svg" alt="rent" class="service__img">
+                                <p class="request__name">Arriendo</p>
+                            </div>
+                            <p class="request__date"><%=rent_date%></p>
+                            <%if(rent_status === 'Sin Asignar'){%>
+                                <p class="request__status request__status--do"><%=rent_status%></p>
+                            <%}else if(rent_status === 'Asignado'){%>
+                                <p class="request__status request__status--do"><%=rent_status%></p>
+                            <%}else if(rent_status === 'Finalizado'){%>
+                                <p class="request__status request__status--rdy"><%=rent_status%></p>
+                            <%}%>
+        
+                            <div class="request__actions">
+                                <a class="request__action" href="/admin/arriendos/<%=rent_id%>"><img src="/img/icons/edit.svg" alt="edit" class="request__action--img"></a>
+                                <a class="request__action" href="/admin/arriendos/delete/<%=rent_id%>"><img src="/img/icons/delete.svg" alt="delete" class="request__action--img"></a>
+                            </div>
+                        </div>
+                    </div>
+                <%});%>
+            </section>
+        <%}%>
+    </main>
+    <script src="/js/admin-navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+     <!-- Stylesheets -->
+     <link rel="stylesheet" href="css/utils/normalize.css">
+     <link rel="stylesheet" href="css/utils/utils.css">
+     <link rel="stylesheet" href="css/services.css">
+     <!--  -->
+
+    <title>Servicios</title>
+</head>
+<body>
+    <%- include("templates/navbar.ejs")%>
+
+    <main class="main">
+        <section class="services">
+            <h2 class="services__title">Nuestros Servicios</h2>
+            <div class="services__container">
+                <div class="service">
+                    <a href="/servicios/reparaciones" class="service__link">
+                        <img src="../img/services/service1.jpg" alt="Reparaciones" class="service__img">
+                    </a>
+                    <p class="service__name">Reparaciones</p>
+                </div>
+    
+                <div class="service">
+                    <a href="/servicios/mantenciones" class="service__link">
+                        <img src="../img/services/service2.jpg" alt="Mantenciones" class="service__img">
+                    </a>
+                    <p class="service__name">Mantenciones</p>
+                </div>
+    
+                <div class="service">
+                    <a href="/servicios/arrendar" class="service__link">
+                        <img src="../img/services/service3.jpg" alt="Arriendos" class="service__img">
+                    </a>
+                    <p class="service__name">Arriendos</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about">
+            <h2 class="about__title">Sobre Nuestros Servicios</h2>
+            <div class="about__container">
+                <div class="container container--service">
+                    <div class="container__a">
+                        <div class="container__info">
+                            <h3 class="info__title">Reparaciones</h3>
+                            <p class="info__text">¿Como irnos de rutas si nuestras bicicletas presentan fallas? ¡Imposible! Revisa nuestros 
+                                servicios de reparaciones para que jamás tengas preocupaciones con tus bicicletas, no te decepcionaremos.</p>
+                            <a class="g--btns" href="/servicios/reparaciones">Agendar</a>
+                        </div>
+                    </div>
+                    <div class="container__b" style="background-image: url(../img/services/services-img/reparaciones.jpg);">
+                    </div>
+                </div>
+
+                <div class="container container--service">
+                    <div class="container__b" style="background-image: url(../img/services/services-img/mantenciones.jpg);">
+                    </div>
+                    <div class="container__a">
+                        <div class="container__info">
+                            <h3 class="info__title">Mantenciones</h3>
+                            <p class="info__text">¿No te gustaría que tu bicicleta se viera como el primer día que la compraste? ¡Con nosotros 
+                                es posible! Nuestros servicios de mantención le darán una nueva de juventud a tu bicicleta, consulta por nuestros servicios.</p>
+                            <a class="g--btns" href="/servicios/mantenciones">Solicitar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container container--service">
+                    <div class="container__a">
+                        <div class="container__info">
+                            <h3 class="info__title">Arriendos</h3>
+                            <p class="info__text">Tienes tu bicicleta lejos, o simplemente no necesitas una todo el tiempo, pues no te preocupes, tenemos 
+                                la solución perfecta para ti. Consulta sobre nuestro servicio de arriendos, ¡tenemos de lo mejor para ti!</p>
+                            <a class="g--btns" href="/servicios/arrendar">Arrendar</a>
+                        </div>
+                    </div>
+                    <div class="container__b" style="background-image: url(../img/services/services-img/arriendos.jpg);">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include("templates/footer.ejs") %>
+
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

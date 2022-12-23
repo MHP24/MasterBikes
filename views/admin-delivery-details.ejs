@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <!-- <link rel="stylesheet" href="/css/bill-details.css"> -->
+    <link rel="stylesheet" href="/css/admin-requests.css">
+    <title>Pedidos</title>
+</head>
+<body>
+    <%- include("templates/admin-navbar.ejs", {user: userData})%>
+    <main class="main">
+        <section class="head">
+            <h1 class="head__title">Pedido #<%=billId%> - <span class="bill-status"><%=data[0].status%></span></h1>
+            <p class="head__date"><%=data[0].date%></p>
+        </section>
+        
+        <div class="form-container">
+            <form action="/admin/update-bill/<%=billId%>" class="form__repair" method="post">
+                <div class="form__field">
+                    <h3  class="field__label field__text">Seguimiento</h3>
+                    <div class="tracking">
+                        <p class="tracking__title">Fecha de compra</p>
+                        <p class="tracking tracking--complete"><%=logDates.payment_date%></p>
+                        <p class="tracking__title">Fecha de despacho</p>
+                        <%if(logDates.delivery_date === '0000-00-00'){%>
+                            <p class="tracking">Sin resultados</p>
+                        <%}else{%>
+                            <p class="tracking tracking--complete"><%=logDates.delivery_date%></p>
+                        <%}%>
+                        <p class="tracking__title">Fecha de entrega</p>
+                        <%if(logDates.reception_date === '0000-00-00'){%>
+                            <p class="tracking">Sin resultados</p>
+                        <%}else{%>
+                            <p class="tracking tracking--complete"><%=logDates.reception_date%></p>
+                        <%}%>
+                    </div>
+                </div>
+
+                <hr style="width: 95%;">
+
+                <div class="form__field">
+                    <label for="status" class="field__label">Seleccionar Seguimiento</label>
+                    <select name="field__status" id="field__status" class="field__options">
+                        <option value="En Bodega" class="option">En Bodega</option>
+                        <option value="En Camino" class="option">En Camino</option>
+                        <option value="Entregado" class="option">Entregado</option>
+                    </select>
+                </div>
+                <button class="g--btns repair-btn" type="submit">Guardar Seguimiento</button>
+            </form>
+        </div>
+
+        <div class="detail__products">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sku</th>
+                        <th>Categor&iacute;a</th>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%data.forEach( ({product_sku, product_category, product_name, product_price}) => {%>
+                        <tr>
+                            <th><%=product_sku%></th>
+                            <th><%=product_category%></th>
+                            <th><%=product_name%></th>
+                            <th>$<%=product_price%></th>
+                        </tr>
+                    <%});%>
+                </tbody>
+            </table>
+            
+            <div class="summary-bill">
+                <p class="detail--important">Total</p>
+                <p class="detail--price">$<%=total%></p>
+            </div>
+        </div>
+    </main>
+    <script src="/js/admin-navigation.js"></script>
+</body>
+</html>

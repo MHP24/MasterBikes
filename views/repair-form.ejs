@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/service-form.css">
+    <title>Solicitar Reparaciones</title>
+</head>
+<body>
+    <%- include("templates/navbar.ejs")%>
+
+    <main class="main">
+        <section class="request">
+            <h2 class="request__title">Solicitud de reparaci&oacute;n</h2>
+            <div class="form-container">
+                <form action="/repair" class="form-request" method="post">
+                    <div class="request__selections">
+                        <div class="field">
+                            <label class="field__label" for="field__options">Servicio</label>
+                            <select name="field__options" id="field__options" class="field__options">
+                                <option value="reparaciones" class="option">Reparaciones</option>
+                            </select>
+                        </div>
+    
+                        <div class="field">
+                            <label class="field__label" for="field__schedule">Horario</label>
+                            <select name="field__schedule" id="field__schedule" class="field__options">
+                                <%if(data.length > 0) {%>
+                                    <%data.forEach( ({ schedule_id, schedule, schedule_available }) => {%>
+                                        <option value="<%=schedule_id%>" class="option option--schedule"><%=schedule%></option> 
+                                    <%});%>
+                                <%}else {%>
+                                    <option class="option option--schedule">Sin horarios disponibles.</option> 
+                                <%}%>
+                            </select>
+                        </div>
+                    </div>
+
+                    <textarea name="request__description" id="request__description" 
+                    class="request__description"
+                    placeholder="Detalla tus requerimientos"
+                    ></textarea>
+
+                    <div class="request__actions">
+                        <%if(data.length > 0) {%>
+                            <button type="submit" class="g--btns">Agendar</button>
+                        <%}else {%>
+                            <button type="submit" disabled class="g--btns">Agendar</button>
+                        <%}%>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <%- include("templates/footer.ejs") %>
+
+    <script src="/js/navigation.js"></script>
+    <script src="/js/requests-form.js"></script>
+</body>
+</html>

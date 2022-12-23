@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+
+
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <title>Mi Perfil</title>
+</head>
+<body>
+    <%- include("templates/navbar.ejs")%>
+    
+    <main class="main">
+        <section class="profile">
+            <div class="profile__img">
+                <h1 class="profile__title">¡Hola <%=data.username%>!</h1>
+                <img src="<%=data.user_picture%>" alt="profile-picture" class="profile__img__src">
+            </div>
+            <div class="profile__container">
+                <div class="profile__info">
+                    <h2 class="info__title">Tus datos</h2>
+                    <div class="info__data__container">
+                        <div class="data__item">
+                            <p class="data__title">Nombre</p>
+                            <p class="data__paragraph"><%=data.username%></p>
+                        </div>
+
+                        <div class="data__item">
+                            <p class="data__title">Email</p>
+                            <p class="data__paragraph"><%=data.email%></p>
+                        </div>
+
+                        <div class="data__item">
+                            <p class="data__title">Rut</p>
+                            <p class="data__paragraph"><%=data.rut%></p>
+                        </div>
+
+                        <div class="data__item">
+                            <p class="data__title">Ocupaci&oacute;n</p>
+                            <p class="data__paragraph"><%=data.ocupation%></p>
+                        </div>
+
+                        <div class="data__item">
+                            <p class="data__title">Direcci&oacute;n</p>
+                            <p class="data__paragraph"><%=data.address%></p>
+                        </div>
+                    </div>
+                    <div class="profile__btns">
+                        <%if(data.role === 'Administrador'){%>
+                            <a href="/admin/inicio" class="g--btns profile-btn">Administrar</a>
+                        <%}%>
+                        <a href="/logout" class="g--btns profile-btn">Cerrar Sesi&oacute;n</a>
+                    </div>
+
+                </div>
+
+                <div class="profile__bills">
+                    <div class="bills">
+                        <h2 class="info__title">Tus compras</h2>
+                        <div class="bills__container">
+                            <%if(bills.length > 0){%>
+                                <%bills.forEach( ({ id, payment_day, total_price, status }) => {%>
+                                    <a class="bill" href="detalles/<%=id%>">
+                                        <div class="bill__data">
+                                            <p class="bill__id">Orden <%=id%></p>
+                                            <p class="bill__date"><%=payment_day%></p>
+                                            <p class="bill__price">Total $<%=total_price%></p>
+                                        </div>
+                                        <div class="bill__msc">
+                                            <%if(status === 'En Bodega'){%>
+                                                <p class="bill__status"><%=status%> 📦</p>
+                                            <%}else if(status === 'En Camino'){%>
+                                                <p class="bill__status"><%=status%> 🚚</p>
+                                            <%}else if(status === 'Entregado'){%>
+                                                <p class="bill__status"><%=status%> 🚲</p>
+                                            <%}%>
+                                        </div>
+                                    </a>
+                                <%});%>
+                            <%}else {%>
+                                <h2 class="info__no-data">¡A&uacute;n no hay compras :(!</h2>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile__bills">
+                    <div class="bills">
+                        <h2 class="info__title">Tus Reparaciones</h2>
+                        <div class="bills__container">
+                            <%if(repairs.length > 0){%>
+                                <%repairs.forEach( ({ repair_id, req_date, repair_descr, status, feedback }) => {%>
+                                    <div class="bill repair">
+                                        <div class="bill__data repair__data">
+                                            <p class="bill__id">Reparaci&oacute;n ID <%=repair_id%></p>
+                                            <p class="bill__price"><%=repair_descr%></p>
+                                            <p class="bill__date"><%=req_date%></p>
+                                            <p class="bill__price">Estado - <%=status%></p>
+                                        </div>
+                                        <div class="bill__msc repair__msc">
+                                            <p class="bill__status"><%=feedback%></p>
+                                        </div>
+                                    </div>
+                                <%});%>
+                            <%}else {%>
+                                <h2 class="info__no-data">¡A&uacute;n no hay reparaciones :(!</h2>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile__bills">
+                    <div class="bills">
+                        <h2 class="info__title">Tus Arriendos</h2>
+                        <div class="bills__container">
+                            <%if(rents.length > 0){%>
+                                <%rents.forEach( ({ id, bike_type, req_date, total, rent_status, instructions }) => {%>
+                                    <div class="bill">
+                                        <div class="bill__data rent__data">
+                                            <p class="bill__id">Arriendo ID <%=id%></p>
+                                            <p class="bill__date"><%=bike_type%></p>
+                                            <p class="bill__date"><%=req_date%></p>
+                                            <p class="bill__price">Total - $<%=total%></p>
+                                        </div>
+                                        <div class="bill__msc rent__msc">
+                                            <%if(rent_status === 'Sin Asignar'){%>
+                                                <p class="bill__status"><%=rent_status%> 🔄</p>
+                                            <%}else if(rent_status === 'Asignado'){%>
+                                                <div class="bill__area">
+                                                    <p class="bill__status" style="width: 100%;"><%=rent_status%> 🚀</p>
+                                                    <p class="bill__date"><%=instructions%></p>
+                                                </div>
+                                            <%}else if(rent_status === 'Finalizado'){%>
+                                                <p class="bill__status"><%=rent_status%> ✅</p>
+                                            <%}%>
+                                        </div>
+                                    </div>
+                                <%});%>
+                            <%}else {%>
+                                <h2 class="info__no-data">¡A&uacute;n no hay arriendos :(!</h2>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile__bills">
+                    <div class="bills">
+                        <h2 class="info__title">Tus Mantenciones</h2>
+                        <div class="bills__container">
+                            <%if(maintenances.length > 0){%>
+                                <%maintenances.forEach( ({ repair_id, req_date, repair_descr, status, feedback }) => {%>
+                                    <div class="bill repair">
+                                        <div class="bill__data repair__data">
+                                            <p class="bill__id">Mantenci&oacute;n ID <%=repair_id%></p>
+                                            <p class="bill__price"><%=repair_descr%></p>
+                                            <p class="bill__date"><%=req_date%></p>
+                                            <p class="bill__price">Estado - <%=status%></p>
+                                        </div>
+                                        <div class="bill__msc repair__msc">
+                                            <p class="bill__status"><%=feedback%></p>
+                                        </div>
+                                    </div>
+                                <%});%>
+                            <%}else {%>
+                                <h2 class="info__no-data">¡A&uacute;n no hay Mantenciones :(!</h2>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+                
+        </section>
+    </main>
+
+    <%- include("templates/footer.ejs") %>
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

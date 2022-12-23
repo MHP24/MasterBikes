@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--  Fonts  -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+     <!--  -->
+
+      <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/products.css">
+    <title>Cat&aacute;logo</title>
+</head>
+<body>
+    <%- include("templates/navbar.ejs")%>
+
+    <main>
+        <section class="products-navigation">
+            <div class="categories">
+                <h2 class="categories__title">Categor&iacute;as</h2>
+                <div class="categories__container">
+                    <a href="/categorias/Bicicletas" class="category">Bicicletas</a>
+                    <a href="/categorias/Herramientas" class="category">Herramientas</a>
+                    <a href="/categorias/Repuestos" class="category">Repuestos</a>
+                    <a href="/categorias/Ropa" class="category">Ropa</a>
+                    <a href="/categorias/Accesorios" class="category">Accesorios</a>
+                </div>
+            </div>
+
+            <div class="product-searcher">
+                <div class="products__filter">
+                    <form class="searcher" method="post" action="/search">
+                        <input type="text" name="product_search" id="product_search" class="product__search" placeholder="¿Qué Buscas?">
+                        <button class="g--btns" type="submit" name="searchbtn" id="searchbtn" style="min-width: 170px;">Buscar</button>
+                    </form>
+    
+                    <p class="filter__results"><span class="results__count"><%=count%></span> Resultados</p>
+                </div>
+
+                <div class="products">
+                    <%products.forEach(( {product_id, product_sku, product_name, product_descr, product_category, product_price, product_img} ) => {%>
+                            <div class="product">
+                                <a class="product__link" href="catalogo/<%=product_sku%>">
+                                    <div class="product__img">
+                                        <img src="<%=product_img%>" alt="<%=product_name%>" class="img__src">
+                                    </div>
+                                    <div class="product__description">
+                                        <p class="description__company"><%=product_category%></p>
+                                        <p class="description__name"><%=product_name%></p>
+                                    </div>
+                                    <p class="description__price">$<%=product_price%></p>
+                                </a>
+                            </div>
+                    <%});%>
+                </div>
+                <%if(count <= 0){%>
+                    <div class="not-found">
+                        <p class="not-found_paragraph">No hay resultados para t&uacute; b&uacute;squeda :(</p>
+                    </div>
+                <%}%>
+            </div>
+        </section>
+    </main>
+
+    <%- include("templates/footer.ejs") %>
+
+    <!-- Scripts  -->
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

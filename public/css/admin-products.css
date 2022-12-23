@@ -1,0 +1,181 @@
+:root {
+    --color-c1: #171717;
+    --color-c2: #272727;
+    --color-c3: #EDEDED;
+    --color-c3--hover: #c9c9c9;
+    --color-c4: #AF012D;
+    --color-c5: #413F3F;
+    --color-c6: #111111;
+    --font-type: 'Open Sans', sans-serif;
+    --font-type-titles: 'Lato', sans-serif;
+    --font-color: #FFFFFF;
+    --font-size-title: 2rem;
+    --font-size-text: 1.2rem;
+}
+
+.logo {
+    text-decoration: none;
+    font-family: var(--font-type-titles);
+    color: var(--color-c4);
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 2em;
+}
+
+body {
+    /* display: grid; */
+    /* grid-template-columns: 210px 1fr; */
+    background-color: var(--color-c1);
+}
+
+
+.profile__name {
+    font-weight: 800;
+}
+
+.log-out__img {
+    width: 30px;
+    height: 30px;
+}
+
+.main {
+    /* margin-left: 210px; */
+}
+
+.head {
+    width: 100%;
+    /* border: 2px red solid; */
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2em;
+    align-items: center;
+}
+
+.head__title {
+    color: var(--font-color);
+    font-family: var(--font-type-titles);
+    font-size: var(--font-size-title);
+}
+
+.head__date {
+    cursor: pointer;
+    color: var(--font-color);
+    font-family: var(--font-type);
+    background-color: var(--color-c5);
+    padding: 1em;
+    border-radius: 2px;
+    transition: .3s;
+}
+
+.head__date:hover {
+    opacity: .8;
+    transition: .3s;
+}
+
+
+/* <a class="product" href="/admin/productos/<%=product_id%>">
+<img src="<%=product_img%>" alt="<%=product_name%>" class="product__img">
+<div class="product__data">
+    <p class="product__name"><%=product_name%></p>
+    <p class="product__category"><%=product_category%></p>
+    <p class="product__price">$<%=product_price%></p>
+</div>
+</a> */
+
+.products {
+    /* border: 2px red solid; */
+    padding: 2em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.3em;
+    grid-auto-rows: minmax(200px, auto);
+    width: 100%;
+}
+
+.product {
+    text-decoration: none;
+    font-size: var(--font-size-text);
+    transition: .3s;
+}
+
+.product:hover {
+    opacity: .85;
+    transition: .3s;
+}
+
+.product__img {
+    width: 100px;
+    height: 100px;
+    border: 4px var(--color-c4) solid;
+    border-radius: 2px;
+}
+
+.product__container {
+    overflow: hidden;
+    height: 100%;
+    background-color: var(--color-c2);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1em;
+    padding: .7em;
+    border-radius: 2px;
+    border: 2px rgba(128, 128, 128, 0.286) solid;
+}
+
+.product__data {
+    width: 100%;
+    font-size: 1rem;
+}
+
+.product__name {
+    height: 32%;
+    overflow: hidden;
+    color: var(--color-c4);
+    text-transform: uppercase;
+    font-weight: 800;
+    font-family: var(--font-type);
+}
+
+.product__category {
+    height: 32%;
+    color: var(--font-color);
+    font-style: italic;
+    font-family: var(--font-type);
+}
+
+.product__price {
+    height: 32%;
+    color: var(--font-color);
+    font-family: var(--font-type);
+}
+
+.head__btn {
+    display: flex;
+    align-items: center;
+    padding: .2em .7em;
+    text-decoration: none;
+    background-color: var(--color-c4);
+    width: auto;
+    border-radius: 4px;
+    transition: .3s;
+}
+
+.head__btn:hover {
+    opacity: .8;
+    transition: .3s;
+}
+
+.head__btn__icon {
+    width: 30px;
+    height: 30px;
+}
+
+.head__btn__name {
+    color: var(--font-color);
+    font-weight: 800;
+    font-family: var(--font-type);
+}
+

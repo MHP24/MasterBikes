@@ -1,0 +1,115 @@
+:root {
+    --color-c1: #171717;
+    --color-c2: #272727;
+    --color-c3: #EDEDED;
+    --color-c3--hover: #c9c9c9;
+    --color-c4: #AF012D;
+    --color-c5: #413F3F;
+    --color-c6: #111111;
+    --font-type: 'Open Sans', sans-serif;
+    --font-type-titles: 'Lato', sans-serif;
+    --font-color: #FFFFFF;
+    --font-size-title: 2rem;
+    --font-size-text: 1.2rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-c1);
+}
+
+.main {
+    width: 100%;
+    margin-top: 6rem;
+}
+
+.product {
+    width: 95%;
+    padding: 2em 0;
+    border: 2px rgba(128, 128, 128, 0.286) solid;
+    margin: auto;
+}
+
+.product__container {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+.product__img {
+    cursor: pointer;
+    border-radius: 4px;
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+    transition: .3s;
+}
+
+.product__img:hover {
+    opacity: .8;
+    transition: .3s;
+}
+
+.product__details {
+    width: 600px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 2em;
+}
+
+.product__name {
+    color: var(--font-color);
+    text-transform: uppercase;
+    font-family: var(--font-type-titles);
+    font-size: var(--font-size-text);
+    font-weight: 800;
+}
+
+.product__price {
+    color: var(--color-c4);
+    font-family: var(--font-type);
+    font-weight: 800;
+    font-size: var(--font-size-text);
+}
+
+.product__description {
+    color: gray;
+    font-style: italic;
+    line-height: 1.5;
+    font-family: var(--font-type);
+    font-size: var(--font-size-text);
+}
+
+.product__field {
+    color: var(--color-c4);
+    font-weight: 800;
+    font-family: var(--font-type);
+    text-transform: uppercase;
+}
+
+.product__field--data {
+    color: var(--font-color);
+}
+
+.product__btn {
+    padding: 1em 2em;
+    width: 100%;
+}
+
+@media (max-width: 912px) {
+    .product__container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.product__btn--out {
+    cursor: default;
+    color: var(--color-c4);
+    opacity: .7;
+}

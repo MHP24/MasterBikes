@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/contact.css">
+    <title>Cont&aacute;ctanos</title>
+</head>
+
+<body>
+    <%- include("templates/navbar.ejs")%>
+
+        <main class="main">
+            <section class="contact" id="c-form">
+                <div class="bg-contact">
+                </div>
+
+                <div class="form-container">
+                    <h2 class="container__title">Cont&aacute;ctanos</h2>
+                    <form action="/send" class="contact-form" method="post">
+                        <div class="fields">
+                            <div class="field">
+                                <label for="email" class="field__label">Email</label>
+                                <input type="email" name="email" id="email" class="field__input" placeholder="Tu Email">
+                            </div>
+
+                            <div class="field">
+                                <label for="subject" class="field__label">Asunto</label>
+                                <input type="text" name="subject" id="subject" class="field__input"
+                                    placeholder="Asunto        ">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <textarea name="description" id="description" class="field__description"
+                                placeholder="¡Cuentanos!"></textarea>
+                        </div>
+                        <button class="g--btns" type="submit">Enviar</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="location">
+                <h2 class="location__title">Encu&eacute;ntranos En</h2>
+                <div class="location-container">
+                    <a href="https://www.google.com/maps/dir//Av.+10+de+Julio+Huamachuco+915,+Santiago,+Regi%C3%B3n+Metropolitana/@-33.4534115,-70.6475614,19.5z/data=!4m9!4m8!1m0!1m5!1m1!1s0x9662c5d825d7249b:0xdfc687100cfe9ec!2m2!1d-70.64785!2d-33.4529624!3e3?hl=es"
+                        class="location__link">
+                        <img src="/img/location.png" alt="location" class="location__img">
+                    </a>
+                </div>
+                <p class="location__name">Av. 10 de Julio Huamachuco 915, Santiago, Región Metropolitana</p>
+            </section>
+        </main>
+
+        <%- include("templates/footer.ejs") %>
+        <script src="/js/navigation.js"></script>
+</body>
+
+</html>

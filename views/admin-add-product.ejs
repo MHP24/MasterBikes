@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/admin-requests.css">
+    <title>Agregar Producto</title>
+</head>
+<body>
+    <%- include("templates/admin-navbar.ejs", {user: userData})%>
+    <main class="main">
+        <section class="head">
+            <h1 class="head__title">Agregar nuevo producto</h1>
+        </section>
+        
+        <div class="form-container">
+            <form action="/admin/add-product" class="form__repair" method="post">
+                <div class="form__group form__group--img">
+                    <div class="form__field">
+                        <label for="productImg" class="field__label">Enlace Im&aacute;gen</label>
+                        <input name="productImg" id="productImg" class="field__input" placeholder="Imágen del producto"/>
+                    </div>
+                </div>
+
+                <hr style="width: 95%;">
+
+                <div class="form__group">
+                    <div class="form__field">
+                        <label for="productName" class="field__label">Producto</label>
+                        <input name="productName" id="productName" class="field__input" placeholder="Nombre del producto"/>
+                    </div>
+                    <div class="form__field">
+                        <label for="productSku" class="field__label">SKU</label>
+                        <input name="productSku" id="productSku" class="field__input" placeholder="SKU del producto"/>
+                    </div>
+                </div>
+
+                <div class="form__field">
+                    <label for="productDescr" class="field__label">Descripci&oacute;n</label>
+                    <textarea name="productDescr" id="productDescr" class="field__area" placeholder="Descripción del producto"></textarea>
+                </div>
+                
+                <div class="form__field">
+                    <label for="category" class="field__label">Categor&iacute;a</label>
+                    <select name="category" id="category" class="field__options">
+                        <option value="Category" disabled class="option">Seleccionar Categor&iacute;a</option>
+                        <option value="Bicicletas" class="option">Bicicletas</option>
+                        <option value="Herramientas" class="option">Herramientas</option>
+                        <option value="Repuestos" class="option">Repuestos</option>
+                        <option value="Ropa" class="option">Ropa</option>
+                        <option value="Accesorios" class="option">Accesorios</option>
+                    </select>
+                </div>
+
+                <div class="form__group">
+                    <div class="form__field">
+                        <label for="productPrice" class="field__label">Valor</label>
+                        <input name="productPrice" id="productPrice" class="field__input" placeholder="Valor del producto"/>
+                    </div>
+                </div>
+                <button class="g--btns repair-btn" type="submit">Agregar Producto</button>
+            </form>
+        </div>
+    </main>
+    <script src="/js/admin-navigation.js"></script>
+</body>
+</html>

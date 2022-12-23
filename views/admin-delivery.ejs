@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/admin-requests.css">
+    <link rel="stylesheet" href="/css/admin-delivery.css">
+    <title>Pedidos</title>
+</head>
+<body>
+
+    <%- include("templates/admin-navbar.ejs", {user: userData})%>
+
+    <main class="main">
+        <section class="head">
+            <h1 class="head__title">Pedidos</h1>
+            <a href="/" class="logo">MasterBikes</a>
+            <p class="head__date"><%=data[0].today%></p>
+        </section>
+        <%if(data.length <= 0) {%>
+            <h2 class="no-results">Sin Pedidos :(</h2>
+        <%}else {%>
+            <div class="request request-t">
+                <p class="request__name rqn-title">Factura</p>
+                
+                <div class="request__client">
+                    <p class="request__name rqn-title">Cliente</p>
+                </div>
+                <div class="request__service">
+                    <p class="request__name rqn-title">Monto total</p>
+                </div>
+                <p class="request__name rqn-title">Fecha</p>
+                <p class="request__name rqn-title">Estado</p>
+
+                <div class="request__actions">
+                    <p class="request__name rqn-title">Acciones</p>
+                </div>
+            </div>
+            
+            <section class="requests">
+                <%data.forEach( ( { id, user_picture, username, total_price, date, status } ) => {%>
+                    <div class="request__container">
+                        <div class="request">
+                            <p class="request__id">#<%=id%></p>
+                            
+                            <div class="request__client">
+                                <img src="<%=user_picture%>" alt="MB" class="client__img">
+                                <p class="client__name"><%=username%></p>
+                            </div>
+                            <div class="request__service">
+                                <p class="request__name">$<%=total_price%></p>
+                            </div>
+                            <p class="request__date"><%=date%></p>
+                            <%if(status === 'En Bodega'){%>
+                                <p class="request__status request__status--do"><%=status%></p>
+                            <%}else if(status === 'En Camino'){%>
+                                <p class="request__status request__status--do"><%=status%></p>
+                            <%}else if(status === 'Entregado'){%>
+                                <p class="request__status request__status--rdy"><%=status%></p>
+                            <%}%>
+        
+                            <div class="request__actions">
+                                <a class="request__action" href="/admin/pedidos/<%=id%>"><img src="/img/icons/edit.svg" alt="edit" class="request__action--img"></a>
+                                <a class="request__action" href="/admin/pedidos/delete/<%=id%>"><img src="/img/icons/delete.svg" alt="delete" class="request__action--img"></a>
+                            </div>
+                        </div>
+                    </div>
+                <%});%>
+            </section>
+        <%}%>
+    </main>
+    <script src="/js/admin-navigation.js"></script>
+</body>
+</html>

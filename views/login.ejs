@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    
+    <!-- Stylesheets-->
+    <link rel="stylesheet" href="css/utils/normalize.css">
+    <link rel="stylesheet" href="css/utils/utils.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Iniciar Sesi&oacute;n</title>
+</head>
+<body>
+    <%- include("templates/navbar.ejs")%>
+
+    <main class="main">
+        <div class="login">
+            <h3 class="login__title">¡Bienvenido!</h3>
+            <h3 class="login__subtitle">MasterBikes</h3>
+    
+            <form id="form-login" action="/login" method="post" class="login__form">
+                <input type="text" id="username" name="username" placeholder="Tu Nombre" class="login__input" autocomplete="off">
+                <input type="password" id="password" name="password" placeholder="Contraseña" class="login__input">
+                <a href="/register" class="login-link">¿No tienes una cuenta? ¡Registrate!</a>
+                <button class="login__btn g--btns" type="submit" id="login-btn">Iniciar sesi&oacute;n</button>
+            </form>
+        </div>
+    </main>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <%if(alert) {%>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then( () => {
+                window.location = '/<%= ruta %>';
+            })
+        </script>
+    <%}%>
+    <script src="../js/navigation.js"></script>
+</body>
+</html>

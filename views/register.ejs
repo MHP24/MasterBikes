@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    
+    <!-- Stylesheets-->
+    <link rel="stylesheet" href="css/utils/normalize.css">
+    <link rel="stylesheet" href="css/utils/utils.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/register.css">
+    <title>Registrarse</title>
+</head>
+<body>
+    <%- include("templates/navbar.ejs")%>
+
+    <main class="main">
+        <section class="auth">
+            <div class="login">
+                <h3 class="login__title">¡Bienvenido!</h3>
+                <h3 class="login__subtitle">MasterBikes</h3>
+        
+                <form id="form-register" action="/register" method="post" class="login__form">
+                    <div class="field">
+                        <label class="field__label" for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="email@mail.com" class="login__input">
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="username">Nombre</label>
+                        <input type="text" id="username" name="username" placeholder="Nombre" class="login__input">
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="rut">Rut</label>
+                        <input type="text" id="rut" name="rut" placeholder="12345678-9" class="login__input">
+                    </div>
+                    <textarea name="address" id="address" class="login__area" placeholder="Dirección"></textarea>
+                    <div class="field field--b">
+                        <label class="field__label" for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" placeholder="Contraseña" class="login__input">
+                    </div>
+                    <div class="field field--b">
+                        <label class="field__label" for="password2">Repetir contraseña</label>
+                        <input type="password" id="password2" name="password2" placeholder="Repetir contraseña" class="login__input">
+                    </div>
+                    <div class="field">
+                        <label class="field__label" for="field__options">Ocupaci&oacute;n</label>
+                        <select name="field__options" id="field__options" class="field__options">
+                            <option value="Deportista" class="option">Deportista</option>
+                            <option value="Profesional" class="option">Profesional</option>
+                            <option value="Aficionado" class="option">Aficionado</option>
+                            <option value="Turista" class="option">Turista</option>
+                        </select>
+                    </div>
+                    <div class="field field--b">
+                        <label class="field__label" for="profilePicture">URL Im&aacute;gen</label>
+                        <input type="text" id="profilePicture" name="profilePicture" placeholder="URL imágen" class="login__input">
+                    </div>
+                    <button class="login__btn g--btns" type="submit" id="register-btn">Registrarse</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

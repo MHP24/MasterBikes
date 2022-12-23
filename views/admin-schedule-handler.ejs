@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/admin-requests.css">
+    <link rel="stylesheet" href="/css/admin-stock.css">
+    <link rel="stylesheet" href="/css/admin-schedule.css">
+    <title>Gestionar Horario</title>
+</head>
+<body>
+    <%- include("templates/admin-navbar.ejs", {user: userData})%>
+    <main class="main">
+        <section class="head">
+            <h1 class="head__title">Mis Horarios</h1>
+            <p class="head__date"><%=schedules[0].today%></p>
+        </section>
+
+        <section class="schedule-generator">
+            <div class="request__container schedule-creator">
+                <p class="f__title">Generar Horario</p>
+                <form class="request schedule__g" action="/admin/create_schedule" method="post">
+                    <div class="form__field">
+                        <label for="day" class="field__label">D&iacute;a</label>
+                        <input name="day" id="day" class="field__input" placeholder="Ej: 01" required/>
+                    </div>
+
+                    <div class="form__field">
+                        <label for="month" class="field__label">Mes</label>
+                        <input name="month" id="month" class="field__input" placeholder="Ej: 06" required/>
+                    </div>
+
+                    <div class="form__field">
+                        <label for="year" class="field__label">A&nacute;o</label>
+                        <input name="year" id="year" class="field__input" placeholder="Ej: 2022" required/>
+                    </div>
+
+                    <div class="form__field">
+                        <label for="time" class="field__label">Hora</label>
+                        <input name="time" id="time" class="field__input" placeholder="Ej: 18:30" required/>
+                    </div>
+
+                    <div class="request__service">
+                        <button  type="submit" class="g--btns stock__btn stock__btn-g">Guardar</button>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+        <section class="requests">
+            <%schedules.forEach(({ schedule_id, schedule, schedule_available }) => {%>
+                <div class="request__container">
+                    <form class="request" action="/admin/update_schedule/<%=schedule_id%>" method="post">
+                        <p class="request__id"><%=schedule%></p>
+                        <div class="request__client">
+                            <%if(schedule_available == 1){%>
+                                <label for="status" class="field__label">Estado (Disponible)</label>
+                            <%}else {%>
+                                <label for="status" class="field__label">Estado (Ocupado)</label>
+                            <%}%>
+                            <select name="status" id="status" class="field__options">
+                                <option value="Disponible"  class="option">Disponible</option>
+                                <option value="Ocupado"  class="option">Ocupado</option>
+                            </select>
+                        </div>
+                        <div class="request__service">
+                            <button  type="submit" class="g--btns stock__btn">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            <%});%>
+            
+        </section>
+    </main>
+    <script src="/js/admin-navigation.js"></script>
+</body>
+</html>

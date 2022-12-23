@@ -1,0 +1,302 @@
+:root {
+    --color-c1: #171717;
+    --color-c2: #272727;
+    --color-c3: #EDEDED;
+    --color-c3--hover: #c9c9c9;
+    --color-c4: #AF012D;
+    --color-c5: #413F3F;
+    --color-c6: #111111;
+    --font-type: 'Open Sans', sans-serif;
+    --font-type-titles: 'Lato', sans-serif;
+    --font-color: #FFFFFF;
+    --font-size-title: 2rem;
+    --font-size-text: 1.2rem;
+}
+
+.home-summary {
+    width: 95%;
+    margin: 2em auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1em;
+    grid-auto-rows: 120px;
+    justify-content: center;
+    justify-items: center;
+    /* gap: 2em; */
+}
+
+.home-summary__item {
+    cursor: pointer;
+    border-radius: 10px;
+    /* min-width: 300px; */
+    /* height: 120px; */
+    width: 100%;
+    background-color: var(--color-c2);
+    padding: .5em;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    align-items: center;
+    transition: .3s;
+}
+
+.home-summary__item:hover {
+    opacity: .8;
+    transition: .3s;
+}
+
+.summary__logo {
+    background-color: #af012d61;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    width: 80px;
+    height: 80px;
+}
+
+.summary__img {
+    width: 30px;
+    height: 30px;
+}
+
+.summary__data {
+    height: auto;
+    line-height: 0.2;
+}
+
+.summary__title {
+    color: var(--font-color);
+    font-family: var(--font-type);
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.summary__descr {
+    color: var(--color-c3--hover);
+    font-family: var(--font-type);
+    font-style: italic;
+}
+
+.home-data {
+    width: 95%;
+    margin: 4em auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1em;
+    justify-content: center;
+    justify-items: center;
+}
+
+.home-bills {
+    padding: 0 1em;
+    width: 100%;
+    background-color: var(--color-c2);
+    border-radius: 5px;
+    transition: .3s;
+    height: fit-content;
+}
+
+.home-bills:hover {
+    opacity: .7;
+    transition: .3s;
+}
+
+.bills__title {
+    color: var(--font-color);
+    font-family: var(--font-type-titles);
+}
+
+.bills__container-title,
+.bill__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    justify-items: center;
+}
+
+.bill__row,
+.bill__row-title {
+    width: 100%;
+    text-align: center;
+}
+
+.bills__container-title {
+    border-bottom: 2px rgba(128, 128, 128, 0.286) solid;
+}
+
+.bill__row-title  {
+    color: var(--font-color);
+    font-family: var(--font-type);
+}
+
+.bill__row-order,
+.bill__row-user,
+.bill__row-total,
+.bill__row-date {
+    color: var(--font-color);
+    font-family: var(--font-type);
+}
+
+.bill__row-total {
+    background-color: #af012d61;
+    padding: .3em 0;
+    border-radius: 4px;
+}
+
+.bill__row-date {
+    font-style: italic;
+}
+
+.bill__container--g {
+    background-color: var(--color-c6);
+}
+
+.home-products {
+    padding: 0 1em;
+    width: 100%;
+    background-color: var(--color-c2);
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.home-products:hover {
+    opacity: .7;
+    transition: .3s;
+}
+
+.product__img {
+    width: 100px;
+    height: 100px;
+    border: var(--color-c4) 4px solid;
+    border-radius: 2px;
+}
+
+.products__title {
+    color: var(--font-color);
+    font-family: var(--font-type-titles);
+    font-size: 1.5rem;
+}
+
+.product__container {
+    padding: .5em 0;
+}
+
+.product {
+    padding: .5em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1.2em;
+    border-bottom: 2px rgba(128, 128, 128, 0.286) solid;
+}
+
+.product__data {
+    width: 100%;
+}
+
+.product__name,
+.product__price {
+    color: var(--font-color);
+    font-family: var(--font-type);
+    font-size: var(--font-size-text);
+    font-weight: 800;
+}
+
+@media (max-width: 924px) {
+    .home-data {
+        grid-template-columns: 1fr;
+    }
+}
+
+.head__container {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+
+.section-a {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1em;
+}
+
+.generator__title {
+    /* border: 2px red solid; */
+    width: 97%;
+    margin: auto;
+    color: var(--font-color);
+    font-family: var(--font-type-titles);
+    font-size: 1.5rem;
+}
+
+.generate_btn {
+    background-color: var(--color-c4);
+    color: var(--font-color);
+    transition: .3s;
+}
+
+.generate_btn:hover {
+    background-color: var(--color-c4);
+    opacity: .8;
+    transition: .3s;
+}
+
+.summary-generator {
+    border-radius: 5px;
+    padding: 2em 0;
+    background-color: var(--color-c2);
+    /* border: 2px red solid; */
+    width: 100%;
+}
+
+.field__label {
+    font-family: var(--font-type);
+    color: var(--font-color);
+    font-weight: 800;
+}
+
+.form__group--home {
+    display: flex;
+}
+.field__input {
+    font-family: var(--font-type);
+}
+
+.field__input::placeholder {
+    font-style: italic;
+    font-family: var(--font-type);
+}
+
+
+
+
+
+
+/* <section class="summary-generator">
+<h3 class="generator__title">Generar Informes</h3>
+<form action="" class="summary-form" method="GET">
+    <div class="form__group">
+        <div class="form__field">
+            <label for="day" class="field__label">D&iacute;a</label>
+            <input type="text" name="day" id="day" class="field__input">
+        </div>
+
+        <div class="form__field">
+            <label for="month" class="field__label">Mes</label>
+            <input type="text" name="month" id="month" class="field__input">
+        </div>
+
+        <div class="form__field">
+            <label for="year" class="field__label">A&nacute;o</label>
+            <input type="text" name="year" id="year" class="field__input">
+        </div>
+    </div>
+
+    <div class="form__group">
+        <button class="g--btns repair-btn">Genear param&eacute;trico</button>
+        <button class="g--btns repair-btn">Genear informe mensual</button>
+    </div>
+</form>
+</section> */

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/bill-details.css">
+    <title>Informaci&oacute;n de orden</title>
+</head>
+<body>
+    <%- include("templates/navbar.ejs")%>
+
+    <main class="main">
+        <section class="details">
+            <div class="details__tracking">
+                <div class="tracking">
+                    <h2>Seguimiento</h2>
+                    <p class="tracking__title">Fecha de compra</p>
+                    <p class="tracking__paragraph tracking--complete"><%=logDates.payment_date%></p>
+                    <p class="tracking__title">Fecha de despacho</p>
+                    <%if(logDates.delivery_date === '0000-00-00'){%>
+                        <p class="tracking__paragraph">Sin resultados</p>
+                    <%}else{%>
+                        <p class="tracking__paragraph tracking--complete"><%=logDates.delivery_date%></p>
+                    <%}%>
+                    <p class="tracking__title">Fecha de entrega</p>
+                    <%if(logDates.reception_date === '0000-00-00'){%>
+                        <p class="tracking__paragraph">Sin resultados</p>
+                    <%}else{%>
+                        <p class="tracking__paragraph tracking--complete"><%=logDates.reception_date%></p>
+                    <%}%>
+                </div>
+            </div>
+
+
+            <div class="details__container">
+                <div class="detail__item">
+                    <h2 class="detail__title">MasterBikes</h2>
+                </div>
+    
+                <div class="detail__item">
+                    <div class="detail__subitem">
+                        <div class="detail__idem">
+                            <p>Facturar A: <span class="detail"><%=rut%></span></p>
+                            <p>Nombre: <span class="detail"><%=username%></span></p>
+                        </div>
+                    </div>
+    
+                    <div class="detail__subitem">
+                            <p>N Factura: <span class="detail"><%=billId%></span></p>
+                            <p>Fecha: <span class="detail"><%=date%></span></p>
+                    </div>
+                </div>
+    
+                <div class="detail__products">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Sku</th>
+                                <th>Categor&iacute;a</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%data.forEach( ({product_sku, product_category, product_name, product_price}) => {%>
+                                <tr>
+                                    <th><%=product_sku%></th>
+                                    <th><%=product_category%></th>
+                                    <th><%=product_name%></th>
+                                    <th>$<%=product_price%></th>
+                                </tr>
+                            <%});%>
+                        </tbody>
+                    </table>
+                    
+                    <div class="summary-bill">
+                        <p class="detail--important">Total</p>
+                        <p class="detail--price">$<%=total%></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include("templates/footer.ejs") %>
+
+    <script src="/js/navigation.js"></script>
+</body>
+</html>

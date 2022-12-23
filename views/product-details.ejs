@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/product-details.css">
+    <title><%=product.product_name%></title>
+</head>
+
+<body>
+    <%- include("templates/navbar.ejs")%>
+
+    <main class="main">
+        <section class="product">
+            <div class="product__container">
+                <img src="<%=product.product_img%>" alt="<%=product.product_name%>" class="product__img">
+                <div class="product__details">
+                    <div class="product__details__item">
+                        <p class="product__name"><%=product.product_name%></p>
+                        <p class="product__price">$<%=product.product_price%></p>
+                    </div>
+
+                    <div class="product__details__item">
+                        <p class="product__description">
+                            <%=product.product_descr%>
+                        </p>
+                        <%if(product.product_status === 'Agotado') {%>
+                            <a class="product__btn g--btns product__btn--out" disabled href="/catalogo/<%=product.product_sku%>">Agotado</a>
+                        <%}else {%>
+                            <a class="product__btn g--btns" href="/add/<%=product.product_sku%>">Agregar al carro</a>
+                        <%}%>
+                    </div>
+
+                    <div class="product__details__item">
+                        <p class="product__field">SKU <span class="product__field--data"><%=product.product_sku%></span></p>
+                        <p class="product__field">Categor&iacute;a(s) <span class="product__field--data"> <%=product.product_category%></span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include("templates/footer.ejs") %>
+    <script src="/js/navigation.js"></script>
+</body>
+
+</html>

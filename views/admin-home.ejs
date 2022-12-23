@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/admin-requests.css">
+    <link rel="stylesheet" href="/css/admin-home.css">
+    <title>Inicio Administraci&oacute;n</title>
+</head>
+<body>
+    <%- include("templates/admin-navbar.ejs", {user: userData})%>
+    
+    <main class="main">
+        <section class="head">
+            <h1 class="head__title">¡Bienvenido <%=userData.username%>!</h1>
+            <div class="head__container">
+                <a href="/admin/generar_informe" class="g--btns generate_btn">Generar Informe Mensual</a>
+                <p class="head__date"><%=orders[0].today%></p>
+            </div>
+        </section>
+
+        <section class="home-summary">
+            <div class="home-summary__item">
+                <div class="summary__logo">
+                    <img src="/img/icons/summary-package.svg" alt="products" class="summary__img">
+                </div>
+
+                <div class="summary__data">
+                    <p class="summary__title"><%=productCount%></p>
+                    <p class="summary__descr">Productos</p>
+                </div>
+            </div>
+
+            <div class="home-summary__item">
+                <div class="summary__logo">
+                    <img src="/img/icons/summary-user.svg" alt="users" class="summary__img">
+                </div>
+                <div class="summary__data">
+                    <p class="summary__title"><%=userCount%></p>
+                    <p class="summary__descr">Usuarios</p>
+                </div>
+            </div>
+
+            <div class="home-summary__item">
+                <div class="summary__logo">
+                    <img src="/img/icons/summary-dollar.svg" alt="users" class="summary__img">
+                </div>
+                <div class="summary__data">
+                    <p class="summary__title">$<%=totalBal%></p>
+                    <p class="summary__descr">Ganancias Totales</p>
+                </div>
+            </div>
+
+            <div class="home-summary__item">
+                <div class="summary__logo">
+                    <img src="/img/icons/summary-truck.svg" alt="users" class="summary__img">
+                </div>
+                <div class="summary__data">
+                    <p class="summary__title"><%=soonDel%></p>
+                    <p class="summary__descr">Env&iacute;o(s) Pr&oacute;ximos</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-data">
+            <section class="section-a">
+                <div class="home-bills">
+                    <h2 class="bills__title">Ordenes Recientes</h2>
+                    <div class="bills__container-title">
+                        <div class="bill__row">
+                            <p class="bill__row-title">Orden</p>
+                        </div>
+                        <div class="bill__row">
+                            <p class="bill__row-title">Usuario</p>
+                        </div>
+                        <div class="bill__row">
+                            <p class="bill__row-title">Monto</p>
+                        </div>
+                        <div class="bill__row">
+                            <p class="bill__row-title">Fecha</p>
+                        </div>
+                    </div>
+                    <%orders.forEach(( { id, username, total_price, payment_date } ) => {%>
+                        <div class="bill__container">
+                            <div class="bill__row">
+                                <p class="bill__row-order">#<%=id%></p>
+                            </div>
+                            <div class="bill__row">
+                                <p class="bill__row-user"><%=username%></p>
+                            </div>
+                            <div class="bill__row">
+                                <p class="bill__row-total">$<%=total_price%></p>
+                            </div>
+                            <div class="bill__row">
+                                <p class="bill__row-date"><%=payment_date%></p>
+                            </div>
+                        </div>
+                    <%});%>
+                </div>
+
+                <section class="summary-generator">
+                    <h3 class="generator__title">Generar Informe</h3>
+                    <form action="/admin/gen_custom_summary" class="summary-form" method="POST">
+                        <div class="form__group form__group--home">
+                            <div class="form__field">
+                                <label for="day" class="field__label">D&iacute;a</label>
+                                <input type="text" name="day" id="day" class="field__input" placeholder="Ej: 01">
+                            </div>
+    
+                            <div class="form__field">
+                                <label for="month" class="field__label">Mes</label>
+                                <input type="text" name="month" id="month" class="field__input" placeholder="Ej: 06" required>
+                            </div>
+    
+                            <div class="form__field">
+                                <label for="year" class="field__label">A&nacute;o</label>
+                                <input type="text" name="year" id="year" class="field__input" placeholder="Ej: 2022" required>
+                            </div>
+                        </div>
+    
+                        <div class="form__group">
+                            <button class="g--btns repair-btn">Generar informe</button>
+                        </div>
+                    </form>
+                </section>
+            </section>
+
+            
+
+            <section class="home-products">
+                <h3 class="products__title">Productos m&aacute;s vendidos</h3>
+                <div class="product__container">
+                    <%bestProducts.forEach( ({ product_img, product_name, product_price }) => {%>
+                        <div class="product">
+                            <img src="<%=product_img%>" alt="" class="product__img">
+                            <div class="product__data">
+                                <p class="product__name"><%=product_name%></p>
+                                <p class="product__price">$<%=product_price%></p>
+                            </div>
+                        </div>
+                    <%});%>
+                </div>
+            </section>
+
+            
+        </section>
+
+
+    </main>
+    <script src="/js/admin-navigation.js"></script>
+</body>
+</html>

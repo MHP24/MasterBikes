@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/service-form.css">
+    <title>Solicitar Servicio</title>
+</head>
+<body>
+    <%- include("templates/navbar.ejs")%>
+
+    <main class="main">
+        <section class="request">
+            <h2 class="request__title">Solicitud de arriendo</h2>
+            <div class="form-container">
+                <form action="/rent" class="form-request" method="post">
+                    <div class="request__selections">
+                        <div class="field">
+                            <label class="field__label" for="field__options">Servicio</label>
+                            <select name="field__options" id="field__options" class="field__options">
+                                <option value="arriendos" class="option">Arriendos</option>
+                            </select>
+                        </div>
+    
+                        <div class="field">
+                            <label class="field__label" for="field__type">Tipo de bicicleta - (Garant&iacute;a)</label>
+                            <select name="field__type" id="field__type" class="field__options">
+                                <option value="Bicicleta Competicion-90000" class="option option--bike">Bicicleta Competici&oacute;n - $90000</option>
+                                <option value="Bicicleta Mountain Bike (MTB)-40000" class="option option--bike">Bicicleta Mountain Bike (MTB) - $40000</option>
+                                <option value="Bicicleta BMX-40000" class="option">Bicicleta BMX - $40000</option>
+                                <option value="Bicicleta de paseo-30000" class="option option--bike">Bicicleta de paseo - $30000</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label class="field__label" for="field__days">Periodo de arriendo</label>
+                            <select name="field__days" id="field__days" class="field__options">
+                                <option value="3d-15000" class="option option--days">3 D&iacute;as - $15000</option>
+                                <option value="1w-70000" class="option option--days">1 Semana $70000</option>
+                                <option value="1m-140000" class="option option--days">1 Mes $140000</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label class="field__label" for="field__payment-method">Metodo de pago</label>
+                            <select name="field__paymentMethod" id="field__paymentMethod" class="field__options">
+                                <option value="Efectivo" class="option">Efectivo</option>
+                                <option value="Debito" class="option">Debito</option>
+                                <option value="Credito" class="option">Credito</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <textarea name="request__description" id="request__description" 
+                    class="request__description"
+                    placeholder="¿Qué Necesitas?"
+                    ></textarea>
+
+                    <div class="request__actions">
+                        <div class="mount">
+                            <label for="payment-mount" class="field__label">Total</label>
+                            <input type="text" disabled name="payment-mount" id="payment-mount" class="field__input" placeholder="$Monto">
+                            <button class="g--btns" id="calc-payment">Presupuestar</button>
+                        </div>
+                        <button type="submit" class="g--btns">Solicitar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <%- include("templates/footer.ejs") %>
+
+    <script src="/js/navigation.js"></script>
+    <script src="/js/requests-form.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <%if(alert) {%>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then( () => {
+                window.location = '/<%= ruta %>';
+            })
+        </script>
+    <%}%>
+</body>
+</html>

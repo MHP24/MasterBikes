@@ -1,0 +1,134 @@
+:root {
+    --color-c1: #171717;
+    --color-c2: #272727;
+    --color-c3: #EDEDED;
+    --color-c3--hover: #c9c9c9;
+    --color-c4: #AF012D;
+    --color-c5: #413F3F;
+    --color-c6: #111111;
+    --font-type: 'Open Sans', sans-serif;
+    --font-type-titles: 'Lato', sans-serif;
+    --font-color: #FFFFFF;
+    --font-size-title: 2rem;
+    --font-size-text: 1.2rem;
+}
+
+body {
+    background-color: var(--color-c1);
+    font-family: var(--font-type);
+}
+
+.main {
+    margin: 10rem 0;
+}
+
+/* Team */
+
+.team {
+    width: 100%;
+    text-align: center;
+}
+
+.team__title {
+    color: var(--font-color);
+    font-family: var(--font-type-titles);
+    text-transform: uppercase;
+    font-size: var(--font-size-title);
+}
+
+.member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member__img {
+    width: 350px;
+    max-width: 100%;
+    height: 500px;
+}
+
+.members__container {
+    margin-top: 5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+}
+
+.member__name {
+    width: 90%;
+    background-color: var(--color-c4);
+    padding: 1.5em 0;
+    color: var(--font-color);
+    font-family: var(--font-type);
+    font-size: var(--font-size-text);
+}
+
+.img__container {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Container About */
+.container {
+    margin-top: 3rem;
+}
+
+.info__text--about {
+    font-style: italic;
+}
+
+/* Policy */
+
+.policy {
+    margin: 7em 0;
+    width: 100%;
+    text-align: center;
+}
+
+.policy__title {
+    font-size: var(--font-size-title);
+    font-family: var(--font-type-titles);
+    color: var(--font-color);
+    text-transform: uppercase;
+}
+
+.policy__items {
+    margin: 5em 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4em;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.policy__img {
+    cursor: pointer;
+    width: 150px;
+    height: 150px;
+    background-color: var(--color-c5);
+    border-radius: 50%;
+    padding: 2em;
+    transition: .3s;
+}
+
+.policy__img:hover {
+    opacity: .8;
+    transition: .3s;
+}
+
+.policy__name {
+    color: var(--font-color);
+    font-family: var(--font-type);
+    font-size: var(--font-size-text);
+    text-transform: uppercase;
+    text-align: center;
+}

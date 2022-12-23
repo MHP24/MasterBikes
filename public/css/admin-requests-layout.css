@@ -1,0 +1,67 @@
+:root {
+    --color-c1: #171717;
+    --color-c2: #272727;
+    --color-c3: #EDEDED;
+    --color-c3--hover: #c9c9c9;
+    --color-c4: #AF012D;
+    --color-c5: #413F3F;
+    --color-c6: #111111;
+    --font-type: 'Open Sans', sans-serif;
+    --font-type-titles: 'Lato', sans-serif;
+    --font-color: #FFFFFF;
+    --font-size-title: 2rem;
+    --font-size-text: 1.2rem;
+}
+
+.request__date {
+    text-align: center;
+}
+
+@media (max-width: 1032px) {
+    .request {
+        grid-template-columns: repeat(3, 1fr);
+        text-align: center;
+        justify-content: center;
+        justify-items: center;
+    }
+    
+    .request__client {
+        justify-content: center;
+    }
+
+    .request__service {
+        justify-content: center;
+    }
+}
+
+.rqn-title {
+    font-weight: 800;
+    /* border: 2px red solid; */
+    width: 100%;
+}
+
+.request-t {
+    padding: 0;
+    width: 95%;
+    margin: auto;
+    text-align: center;
+    background-color: var(--color-c1);
+}
+
+.gest__btn {
+    background-color: var(--color-c4);
+    color: var(--font-color);
+    transition: .3s;
+}
+
+.gest__btn:hover {
+    background-color: var(--color-c4);
+    opacity: .8;
+    transition: .3s;
+}
+
+.head__group {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}

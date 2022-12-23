@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/admin-products.css">
+    <link rel="stylesheet" href="/css/admin-requests.css">
+    <title>Productos</title>
+</head>
+<body>
+    <%- include("templates/admin-navbar.ejs", {user: userData})%>
+    
+    <main class="main">
+        <section class="head">
+            <h1 class="head__title">Productos</h1>
+            <a href="/admin/products/agregar" class="head__btn">
+                <img src="/img/icons/admin-add.svg" alt="add" class="head__btn__icon">
+                <p class="head__btn__name">Agregar Producto</p>
+            </a>
+        </section>
+        <div class="products">
+            <%products.forEach( ({product_id, product_name, product_category, product_img, product_price}) => {%>
+                <a href="/admin/productos/<%=product_id%>" class="product">
+                    <div class="product__container">
+                        <img src="<%=product_img%>" alt="<%=product_name%>" class="product__img">
+                        <div class="product__data">
+                            <p class="product__name"><%=product_name%></p>
+                            <p class="product__category"><%=product_category%></p>
+                            <p class="product__price">$<%=product_price%></p>
+                        </div>
+                    </div>
+                </a>
+                <%});%>
+            </div>
+        </main>
+        <script src="/js/admin-navigation.js"></script>
+    </body>
+</html>

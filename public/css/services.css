@@ -1,0 +1,45 @@
+:root {
+    --color-c1: #171717;
+    --color-c2: #272727;
+    --color-c3: #EDEDED;
+    --color-c3--hover: #c9c9c9;
+    --color-c4: #AF012D;
+    --color-c5: #413F3F;
+    --color-c6: #111111;
+    --font-type: 'Open Sans', sans-serif;
+    --font-type-titles: 'Lato', sans-serif;
+    --font-color: #FFFFFF;
+    --font-size-title: 2rem;
+    --font-size-text: 1.2rem;
+}
+
+body {
+    background-color: var(--color-c1);
+    font-family: var(--font-type);
+}
+
+.main {
+    margin-top: 8rem;
+}
+
+.about {
+    margin-top: 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.about__title {
+    font-family: var(--font-type-titles);
+    font-size: var(--font-size-title);
+    text-transform: uppercase;
+    color: var(--font-color);
+    margin-bottom: 2em;
+}
+
+.container--service {
+    margin-bottom: 9rem;
+}
+
+.container__info {
+    align-items: flex-start;
+}

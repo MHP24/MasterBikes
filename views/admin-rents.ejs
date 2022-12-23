@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/admin-requests.css">
+    <title>Arriendo #<%=data.id%></title>
+</head>
+<body>
+    <%- include("templates/admin-navbar.ejs", {user: userData})%>
+    <main class="main">
+        <section class="head">
+            <h1 class="head__title">Arriendo #<%=data.id%></h1>
+            <p class="head__date"><%=data.date%></p>
+        </section>
+        
+        <div class="form-container">
+            <form action="/update-rent/<%=data.id%>" class="form__repair" method="post">
+                <div class="form__field">
+                    <label for="requeriment" class="field__label">Solicitud de arriendo</label>
+                    <textarea name="requeriment" id="requeriment" class="field__area" disabled placeholder="Requerimiento"><%=data.rent_description%></textarea>
+                </div>
+                
+                <div class="form__group">
+                    <div class="form__field">
+                        <label for="bikeRequired" class="field__label">Bicicleta</label>
+                        <input name="bikeRequired" id="bikeRequired" value="<%=data.bike_type%>" class="field__input" disabled placeholder="Bicicleta Requerida"/>
+                    </div>
+                    
+                    <div class="form__field">
+                        <label for="time" class="field__label">Periodo de arriendo</label>
+                        <%if(data.rent_days === '3d'){%>
+                            <input name="time" id="time" value="3 Días" class="field__input" disabled placeholder="Periodo de arriendo"/>
+                            <%}else if(data.rent_days === '1w'){%>
+                                <input name="time" id="time" value="1 Semana" class="field__input" disabled placeholder="Periodo de arriendo"/>
+                                <%}else if(data.rent_days === '1m'){%>
+                                    <input name="time" id="time" value="1 Mes" class="field__input" disabled placeholder="Periodo de arriendo"/>
+                                    <%}%>
+                                </div>
+                                
+                                <div class="form__field">
+                                    <label for="paymentMethod" class="field__label">Metodo de pago</label>
+                                    <input name="paymentMethod" id="paymentMethod" value="<%=data.payment_method%>" class="field__input" disabled placeholder="Metodo de pago"/>
+                                </div>
+                                
+                                <div class="form__field">
+                                    <label for="guaranty" class="field__label">Pago de garant&iacute;a</label>
+                                    <input name="guaranty" id="guaranty" value="<%=data.guaranty%>" class="field__input" disabled placeholder="Garantía"/>
+                                </div>
+                                
+                                <div class="form__field">
+                                    <label for="total" class="field__label">Total</label>
+                                    <input name="total" id="total" value="<%=data.total%>" class="field__input" disabled placeholder="Total"/>
+                                </div>
+                            </div>
+                            
+                            
+                            <hr style="width: 95%;">
+                            
+                            <div class="form__field">
+                                <label for="status" class="field__label">Seleccionar Estado</label>
+                                <select name="field__status" id="field__status" class="field__options">
+                                    <option value="Sin Asignar" class="option">Sin Asignar (Bicicleta sin asignar)</option>
+                                    <option value="Asignado" class="option">Asignado (Cliente recibe Bicicleta)</option>
+                                    <option value="Finalizado" class="option">Finalizado (Proceso de devoluci&oacute;n completado)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form__field">
+                                <label for="summary" class="field__label">Instrucciones</label>
+                                <textarea name="summary" id="summary" class="field__area" placeholder="Indique instrucciones para la entrega y correcto uso."><%=data.instructions%></textarea>
+                            </div>
+                            
+                            <button class="g--btns repair-btn" type="submit">Agregar Seguimiento</button>
+             </form>
+         </div>
+    </main>
+     <script src="/js/admin-navigation.js"></script>
+</body>
+</html>

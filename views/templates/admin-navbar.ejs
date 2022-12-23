@@ -1,0 +1,44 @@
+<nav class="nav hiddeNav">
+    <div class="nav__item">
+        <img src="/img/icons/admin-home.svg" alt="" class="nav__icon">
+        <a href="/admin/inicio" class="nav__link">Inicio</a>
+    </div>
+
+    <div class="nav__item">
+        <img src="/img/icons/requests.svg" alt="" class="nav__icon">
+        <a href="/admin/solicitudes" class="nav__link">Solicitudes</a>
+    </div>
+
+    <div class="nav__item">
+        <img src="/img/icons/admin-package.svg" alt="" class="nav__icon">
+        <a href="/admin/productos" class="nav__link">Productos</a>
+    </div>
+
+    <div class="nav__item">
+        <img src="/img/icons/admin-stock.svg" alt="" class="nav__icon">
+        <a href="/admin/stock" class="nav__link">Stock</a>
+    </div>
+
+    <div class="nav__item">
+        <img src="/img/icons/admin-truck.svg" alt="" class="nav__icon">
+        <a href="/admin/pedidos" class="nav__link">Pedidos</a>
+    </div>
+
+    <div class="nav__item">
+        <img src="/img/icons/admin-users.svg" alt="" class="nav__icon">
+        <a href="/admin/usuarios" class="nav__link">Usuarios</a>
+    </div>
+
+    <div class="nav__msc">
+        <img src="<%=user.user_picture%>" alt="MB" class="nav__profile">
+        <div class="nav__profile__data">
+            <p class="profile__name"><%=user.username%></p>
+            <p class="profile__role"><%=user.role%></p>
+        </div>
+        <a href="/logout" class="log-out"><img src="/img/icons/admin-exit.svg" alt="" class="log-out__img"></a>
+    </div>
+</nav>
+
+<div id="menu-container">
+    <img src="/img/icons/admin-menu.svg" alt="menu" id="menu">
+</div>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/utils/normalize.css">
+    <link rel="stylesheet" href="/css/utils/utils.css">
+    <link rel="stylesheet" href="/css/admin-requests.css">
+    <link rel="stylesheet" href="/css/admin-summary.css">
+    <title>Informe</title>
+</head>
+<body>
+    <%- include("templates/admin-navbar.ejs", {user: userData})%>
+    <main class="main">
+        <h3 class="section__title">Informe Productos</h3>
+        <section class="product__summary">
+            <div class="product">
+                <p class="product__sku p--title">SKU</p>
+                <p class="product__name p--title">Nombre Producto</p>
+                <p class="product__price p--title">Valor</p>
+                <p class="product__quantity p--title">Stock</p>
+            </div>
+            <%stockData.forEach(({product_sku, product_name, product_price, quantity}) => {%>
+                <div class="product">
+                    <p class="product__sku"><%=product_sku%></p>
+                    <p class="product__name"><%=product_name%></p>
+                    <p class="product__price">$<%=product_price%></p>
+                    <p class="product__quantity"><%=quantity%></p>
+                </div>
+            <%});%>
+            <div class="product">
+                <p class="product__sku p--title">Total</p>
+                <p class="product__name p--title"><%=diffProducts%> Productos</p>
+                <p class="product__price p--title">$<%=stockPrice%></p>
+                <p class="product__quantity p--title"><%=stock%> Unidades</p>
+            </div>
+        </section>
+        <h3 class="section__title">Informe Compras</h3>
+        <div class="product bills-summary">
+            <p class="product__sku p--title">N Compra</p>
+            <p class="product__name p--title">Fecha</p>
+            <p class="product__quantity p--title">Total</p>
+        </div>
+        <%bills.forEach(({id, p_date, total_price}) => {%>
+            <div class="product bills-summary">
+                <p class="product__sku"><%=id%></p>
+                <p class="product__name"><%=p_date%></p>
+                <p class="product__quantity">$<%=total_price%></p>
+            </div>
+        <%});%>
+        <div class="product bills-summary">
+            <p class="product__sku p--title">Total</p>
+            <p class="product__name p--title"><%=billsCount%> Compras</p>
+            <p class="product__quantity p--title">$<%=totalBills%></p>
+        </div>
+
+        <h3 class="section__title">Mantenciones</h3>
+        <div class="product bills-summary">
+            <p class="product__sku p--title">N Mantenci&oacute;n</p>
+            <p class="product__name p--title">Fecha</p>
+            <p class="product__quantity p--title">Estado</p>
+        </div>
+        <%maintenances.forEach(({repair_id, r_date, status}) => {%>
+            <div class="product bills-summary">
+                <p class="product__sku"><%=repair_id%></p>
+                <p class="product__name"><%=r_date%></p>
+                <p class="product__quantity"><%=status%></p>
+            </div>
+        <%});%>
+        <div class="product bills-summary">
+            <p class="product__sku p--title">Total</p>
+            <p class="product__name p--title"><%=maintenancesCount%> Mantenciones</p>
+            <p class="product__quantity p--title"></p>
+        </div>
+
+        <h3 class="section__title">Reparaciones</h3>
+        <div class="product bills-summary">
+            <p class="product__sku p--title">N Reparaci&oacute;n</p>
+            <p class="product__name p--title">Fecha</p>
+            <p class="product__quantity p--title">Estado</p>
+        </div>
+        <%repairs.forEach(({repair_id, r_date, status}) => {%>
+            <div class="product bills-summary">
+                <p class="product__sku"><%=repair_id%></p>
+                <p class="product__name"><%=r_date%></p>
+                <p class="product__quantity"><%=status%></p>
+            </div>
+        <%});%>
+        <div class="product bills-summary">
+            <p class="product__sku p--title">Total</p>
+            <p class="product__name p--title"><%=repairsCount%> Reparaciones</p>
+            <p class="product__quantity p--title"></p>
+        </div>
+    </main>
+    <script src="/js/admin-navigation.js"></script>
+</body>
+</html>

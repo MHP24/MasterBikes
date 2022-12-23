@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <!--  -->
+
+    <!-- Style Libraries -->
+    <link rel="stylesheet" href="./css/utils/glider.min.css">
+    <!--  -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/utils/normalize.css">
+    <link rel="stylesheet" href="css/utils/utils.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!--  -->
+    <title>MasterBikes</title>
+</head>
+<body>
+
+    <%- include("templates/navbar.ejs")%>
+
+    <header class="hero">
+        <button id="hero--prev"><</button>
+        <div class="hero__cards">
+            <div class="hcard" style="background-image: url(/img/homepage/homepage1.jpg); 
+            background-repeat: no-repeat; background-size: cover;">
+            </div>
+
+            <div class="hcard" style="background-image: url(/img/homepage/homepage2.jpg); 
+            background-repeat: no-repeat; background-size: cover;">
+            </div>
+
+            <div class="hcard" style="background-image: url(/img/homepage/homepage3.jpg); 
+            background-repeat: no-repeat; background-size: cover;">
+            </div>
+
+            <div class="hcard" style="background-image: url(/img/homepage/homepage4.jpg); 
+            background-repeat: no-repeat; background-size: cover;">
+            </div>
+
+            <div class="hcard" style="background-image: url(/img/homepage/homepage5.jpg); 
+            background-repeat: no-repeat; background-size: cover;">
+            </div>
+        </div>
+        <button id="hero--next">></button>
+        <div role="tablist" id="hero__dots"></div>
+    </header>
+
+   <main>
+
+    <section class="categories">
+        <h2 class="categories__title">Categor&iacute;as</h2>
+        <div id="categories__slider">
+            <button id="category--prev"><</button>
+            <div id="categories__container">
+                <a class="category" href="/categorias/Bicicletas">
+                    <div class="category__img" 
+                    style="background-image: url(/img/categories/bicicletas.png); 
+                    background-size: cover; background-repeat: no-repeat;"></div>
+                    <p class="category__description">Bicicletas</p>
+                </a>
+    
+                <a class="category" href="/categorias/Herramientas">
+                    <div class="category__img" 
+                    style="background-image: url(/img/categories/herramientas.png); 
+                    background-size: cover; background-repeat: no-repeat;"></div>
+                    <p class="category__description">Herramientas</p>
+                </a>
+    
+                <a class="category" href="/categorias/Repuestos">
+                    <div class="category__img" 
+                    style="background-image: url(/img/categories/repuestos.jpg); 
+                    background-size: cover; background-repeat: no-repeat;"></div>
+                    <p class="category__description">Repuestos</p>
+                </a>
+    
+                <a class="category" href="/categorias/Ropa">
+                    <div class="category__img" 
+                    style="background-image: url(/img/categories/ropa.png); 
+                    background-size: cover; background-repeat: no-repeat;"></div>
+                    <p class="category__description">Ropa</p>
+                </a>
+    
+                <a class="category" href="/categorias/Accesorios">
+                    <div class="category__img" 
+                    style="background-image: url(/img/categories/accesorios.png); 
+                    background-size: cover; background-repeat: no-repeat;"></div>
+                    <p class="category__description">Accesorios</p>
+                </a>
+            </div>
+            <button id="category--next">></button>
+            <div role="tablist" id="categories__dots"></div>
+        </div>
+    </section>
+
+    <!-- Content Section/Offers -->
+    <section class="container">
+        <div class="container__a">
+            <div class="container__info">
+                <h3 class="info__title">Oferta Mensual</h3>
+                <p class="info__text">Tenemos para los amantes de las bicicletas como tú las mejores ofertas exclusivas de todo tipo de artículos 
+                    relacionados al ciclismo todos los meses del año. ¡Para que vivas tus rutas al máximo!</p>
+                <a href="/catalogo/16038039" class="g--btns">Ver</a>
+            </div>
+        </div>
+        <div class="container__b" style="background-image: url(../img/bike-template2.jpg);">
+        </div>
+    </section>
+
+    <section class="services">
+        <h2 class="services__title">Nuestros Servicios</h2>
+        <div class="services__container">
+            <div class="service">
+                <a href="/servicios" class="service__link">
+                    <img src="./img/services/service1.jpg" alt="Reparaciones" class="service__img">
+                </a>
+                <p class="service__name">Reparaciones</p>
+            </div>
+
+            <div class="service">
+                <a href="/servicios" class="service__link">
+                    <img src="./img/services/service2.jpg" alt="Mantenciones" class="service__img">
+                </a>
+                <p class="service__name">Mantenciones</p>
+            </div>
+
+            <div class="service">
+                <a href="/servicios" class="service__link">
+                    <img src="./img/services/service3.jpg" alt="Arriendos" class="service__img">
+                </a>
+                <p class="service__name">Arriendos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section/Offers -->
+    <section class="container no-bike">
+        <div class="container__b" style="background-image: url(../img/bike-template3.jpg);">
+        </div>
+        <div class="container__a">
+            <div class="container__info">
+                <h3 class="info__title">¿A&uacute;n No Tienes Una Bicicleta?</h3>
+                <p class="info__text">¡Una bicicleta podría ser una nueva ventana en tu vida!, no te pierdas las que podemos ofrecerte 
+                    en nuestra tienda. Porque nunca está de más el deporte, ¡y porque nunca estará de más una bicicleta en casa!</p>
+                <a href="/categorias/Bicicletas" class="g--btns">Ver</a>
+            </div>
+        </div>
+    </section>
+
+    
+   </main>
+
+   <%- include("templates/footer.ejs") %>
+
+    <!-- Libraries -->
+    <script src="/js/libraries/glider.min.js"></script>
+    <!-- Scripts  -->
+    <script src="/js/navigation.js"></script>
+    <script src="/js/sliders/hero.js"></script>
+    <script src="/js/sliders/categories.js"></script>
+    <script src="/js/sliders/most-selled.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <%if(alert) {%>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then( () => {
+                window.location = '/<%= ruta %>';
+            })
+        </script>
+    <%}%>
+</body>
+</html>
